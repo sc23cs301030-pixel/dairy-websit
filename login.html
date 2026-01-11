@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ksheera-Krishna Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+<!-- Floating milk background -->
+<div class="milk-bg">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Login Card -->
+<div class="login-box">
+  <h2>🥛 Welcome to Ksheera-Krishna</h2>
+  <p>Pure Dairy, Pure Love</p>
+
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="tel" id="phone" placeholder="Mobile Number" required>
+  <input type="text" id="location" placeholder="Your Location" required>
+
+  <button onclick="loginUser()">Enter Dairy</button>
+</div>
+
+<script>
+function loginUser() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const location = document.getElementById("location").value;
+
+  if (!name || !phone || !location) {
+    alert("Please fill all details");
+    return;
+  }
+
+  localStorage.setItem("userName", name);
+  localStorage.setItem("userPhone", phone);
+  localStorage.setItem("userLocation", location);
+
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

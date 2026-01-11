@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Ksheera Krishna Dairy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #27ae60;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+
+    .empty {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🧾 Admin Order Panel</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Details</th>
+      <th>Products</th>
+      <th>Total</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="orders"></tbody>
+</table>
+
+<p id="emptyMsg" class="empty"></p>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const table = document.getElementById("orders");
+const emptyMsg = document.getElementById("emptyMsg");
+
+if (orders.length === 0) {
+  emptyMsg.innerText = "No orders yet.";
+} else {
+  emptyMsg.style.display = "none";
+}
+
+
+orders.forEach((o, i) => {
+  const products = o.items.map(p => `${p.name} (Rs ${p.price})`).join(", ");
+
+
+  table.innerHTML += `
+    <tr>
+      <td>${o.id}</td>
+      <td>
+  <strong>${o.customerName}</strong><br>
+  📞 ${o.customerPhone}<br>
+  🏠 ${o.customerAddress}
+</td>
+
+      <td>${products}</td>
+      <td>₹${o.total}</td>
+      <td>${o.date}</td>
+      <td><button onclick="deleteOrder(${i})">Delete</button></td>
+    </tr>
+  `;
+});
+
+function deleteOrder(index) {
+  orders.splice(index, 1);
+  localStorage.setItem("orders", JSON.stringify(orders));
+  location.reload();
+}
+</script>
+
+</body>
+</html>

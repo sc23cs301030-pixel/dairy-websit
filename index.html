@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ksheera-Krishna Dairy</title>
+
+  <!-- LINK CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="logo">🥛 Ksheera-Krishna Dairy</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <button class="logout" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Pure Desi Dairy Products</h1>
+    <p>Fresh • Natural • Delivered Daily</p>
+    <a href="#products" class="hero-btn">Shop Now</a>
+  </div>
+</section>
+
+<!-- ================= TRUST SECTION ================= -->
+<section class="features reveal">
+  <div class="feature">
+    🐄
+    <h3>Farm Fresh</h3>
+    <p>Directly from farmers</p>
+  </div>
+  <div class="feature">
+    🧈
+    <h3>Pure Ghee</h3>
+    <p>No chemicals, no mixing</p>
+  </div>
+  <div class="feature">
+    🚚
+    <h3>Home Delivery</h3>
+    <p>Indore • Bhopal • Dewas</p>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products" class="reveal">
+  <h2 class="section-title">Our Products</h2>
+
+  <div class="products">
+<!-- Skeleton Loader -->
+<div id="skeleton">
+  <div class="skeleton-card"></div>
+  <div class="skeleton-card"></div>
+</div>
+
+    <!-- GHEE -->
+    <div class="card">
+      <img src="images/ghee.jpg">
+      <h3>Desi Ghee</h3>
+      <select class="weight-select" onchange="selectVariant('ghee',this)">
+        <option value="500g" data-price="450">500g – ₹450</option>
+        <option value="1 Kg" data-price="900">1 Kg – ₹900</option>
+      </select>
+      <p>Price: ₹<span id="price-ghee">450</span></p>
+      <button onclick="addToCart('Desi Ghee','ghee')">Add to Cart</button>
+    </div>
+
+    <!-- PANEER -->
+    <div class="card">
+      <img src="images/paneer.jpg">
+      <h3>Paneer</h3>
+      <select class="weight-select" onchange="selectVariant('paneer',this)">
+        <option value="250g" data-price="120">250g – ₹120</option>
+        <option value="500g" data-price="220">500g – ₹220</option>
+      </select>
+      <p>Price: ₹<span id="price-paneer">120</span></p>
+      <button onclick="addToCart('Paneer','paneer')">Add to Cart</button>
+    </div>
+
+    <!-- CURD -->
+    <div class="card">
+      <img src="images/curd.jpg">
+      <h3>Curd</h3>
+      <select class="weight-select" onchange="selectVariant('curd',this)">
+        <option value="500g" data-price="45">500g – ₹45</option>
+        <option value="1 Kg" data-price="90">1 Kg – ₹90</option>
+      </select>
+      <p>Price: ₹<span id="price-curd">45</span></p>
+      <button onclick="addToCart('Curd','curd')">Add to Cart</button>
+    </div>
+
+    <!-- BUTTER -->
+    <div class="card">
+      <img src="images/butter.jpg">
+      <h3>Butter</h3>
+      <select class="weight-select" onchange="selectVariant('butter',this)">
+        <option value="100g" data-price="80">100g – ₹80</option>
+        <option value="250g" data-price="160">250g – ₹160</option>
+      </select>
+      <p>Price: ₹<span id="price-butter">80</span></p>
+      <button onclick="addToCart('Butter','butter')">Add to Cart</button>
+    </div>
+
+    <!-- PEDA -->
+    <div class="card">
+      <img src="images/peda.jpg">
+      <h3>Peda</h3>
+      <select class="weight-select" onchange="selectVariant('peda',this)">
+        <option value="250g" data-price="150">250g – ₹150</option>
+        <option value="500g" data-price="300">500g – ₹300</option>
+      </select>
+      <p>Price: ₹<span id="price-peda">150</span></p>
+      <button onclick="addToCart('Peda','peda')">Add to Cart</button>
+    </div>
+
+    <!-- MILK CAKE -->
+    <div class="card">
+      <img src="images/milkcake.jpg">
+      <h3>Milk Cake</h3>
+      <select class="weight-select" onchange="selectVariant('milkcake',this)">
+        <option value="250g" data-price="175">250g – ₹175</option>
+        <option value="500g" data-price="350">500g – ₹350</option>
+      </select>
+      <p>Price: ₹<span id="price-milkcake">175</span></p>
+      <button onclick="addToCart('Milk Cake','milkcake')">Add to Cart</button>
+    </div>
+
+    <!-- LASSI -->
+    <div class="card">
+      <img src="images/lassi.jpg">
+      <div class="milk-pour"></div>
+
+      <h3>Lassi</h3>
+      <select class="weight-select" onchange="selectVariant('lassi',this)">
+        <option value="500ml" data-price="60">500ml – ₹60</option>
+        <option value="1 L" data-price="120">1 L – ₹120</option>
+      </select>
+      <p>Price: ₹<span id="price-lassi">60</span></p>
+      <button onclick="addToCart('Lassi','lassi')">Add to Cart</button>
+    </div>
+
+    <!-- ICE CREAM -->
+    <div class="card">
+      <img src="images/icecream.jpg">
+      <h3>Ice Cream</h3>
+      <select class="weight-select" onchange="selectVariant('icecream',this)">
+        <option value="250ml" data-price="90">250ml – ₹90</option>
+        <option value="500ml" data-price="180">500ml – ₹180</option>
+      </select>
+      <p>Price: ₹<span id="price-icecream">90</span></p>
+      <button onclick="addToCart('Ice Cream','icecream')">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= DELIVERY AREAS ================= -->
+<section class="areas reveal">
+  <h2>Delivery Areas</h2>
+  <p>Indore • Bhopal • Dewas • Shajapur • Shajapur</p>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <p>© 2026 Ksheera-Krishna Dairy</p>
+  <p>📞 +91 94071-56211</p>
+  <p>📍 Indore, Madhya Pradesh</p>
+</footer>
+
+<!-- ================= CART ================= -->
+<div class="cart">
+  <h2>🛒 Cart</h2>
+  <div id="cartItems"></div>
+  <h3>Total: ₹<span id="total">0</span></h3>
+
+  <button class="checkout-btn" onclick="checkout()">Place Order</button>
+<button class="whatsapp-btn" onclick="sendWhatsApp()">Order on WhatsApp</button>
+
+</div>
+
+<div id="milk-splash"></div>
+
+<!-- LINK JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
